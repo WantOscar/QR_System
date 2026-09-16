@@ -1,4 +1,145 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIG KOREA 장비 이력</title><style>
-:root{--green:#3f948e;--green2:#e9f6f4;--bg:#f4f7fa;--line:#dbe4ea;--text:#202a35;--muted:#6b7b89}*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text)}.head{background:linear-gradient(100deg,#397d78,#4ca39c);color:#fff;padding:22px 24px}.headin{max-width:960px;margin:auto;display:flex;align-items:center;gap:14px}.brand{font-size:22px;font-weight:900}.pill{border:1px solid rgba(255,255,255,.55);border-radius:99px;padding:6px 12px;font-weight:800;font-size:12px}.notice{background:#eaf8f6;border-bottom:1px solid #bfe4df;color:#27645f;text-align:center;font-size:13px;font-weight:800;padding:12px 16px;line-height:1.5}.wrap{max-width:960px;margin:22px auto;padding:0 16px 36px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(26,52,72,.06);margin-bottom:14px}.hero h1{margin:0 0 7px;font-size:30px}.sub{color:var(--muted);font-size:13px;line-height:1.6}.status{display:inline-block;margin-top:10px;background:#eef6f5;color:#357a75;padding:6px 9px;border-radius:99px;font-size:11px;font-weight:900}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}h2{font-size:17px;margin:0 0 13px;color:#2d6964}.info{display:grid;grid-template-columns:145px 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden}.info div{padding:10px 12px;border-bottom:1px solid var(--line)}.info div:nth-last-child(-n+2){border-bottom:0}.k{background:#f7f9fb;font-weight:800;color:#536472}.tbl{width:100%;border-collapse:collapse;font-size:12px}.tbl th{background:#3f948e;color:#fff;text-align:left;padding:10px}.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}.warn{background:#fff7f2;border:1px solid #f1d8c7;color:#8a5131;border-radius:10px;padding:11px 13px;margin-top:10px;font-size:11px;line-height:1.5}.bad{text-align:center;padding:55px 20px}.foot{text-align:center;color:#8996a0;font-size:11px;padding:12px 0 28px}@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:27px}.info{grid-template-columns:125px 1fr}.head{padding:18px 16px}.brand{font-size:20px}.wrap{margin-top:16px}}</style></head><body><header class="head"><div class="headin"><div class="brand">TIG KOREA</div><div class="pill">PUBLIC / CUSTOMER</div></div></header><div class="notice">이 화면은 QR에 연결된 해당 장비의 공개 가능 정보만 표시합니다. 관리자 전용 정보는 제공하지 않습니다.</div><main class="wrap" id="app"></main><div class="foot">TIG KOREA · 장비 이력 조회 시범안</div><script src="data.js"></script><script>
-const D=window.TIG_DATA,esc=v=>String(v??'-').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const id=new URLSearchParams(location.search).get('id'),x=D.equipment.find(v=>v.id===id),app=document.getElementById('app');function info(rows){return '<div class="info">'+rows.map(([k,v])=>'<div class="k">'+esc(k)+'</div><div>'+esc(v)+'</div>').join('')+'</div>'}if(!x){app.innerHTML='<div class="card bad"><h2>장비 QR을 확인해 주세요</h2><p class="sub">해당 장비 정보를 찾을 수 없습니다.</p></div>'}else{const g=D.guides[x.model]||D.guides[x.maker]||[];const basic=[['장비 ID',x.id],['제조사',x.maker],['모델',x.model],['H/W 시리얼',x.sn],['시스템/현장',x.system!=='-'?x.system:x.site],['현재 상태',x.status]];const hist=[['입고/납품 관련 일자',x.received],['설치일',x.install],['설치 위치',x.site],['최근 장애/이슈',x.issue],['수리 접수일',x.repair],['수리 횟수',x.repairCount+'회']];app.innerHTML='<section class="card hero"><h1>'+esc(x.model)+' 장비 이력</h1><div class="sub">QR로 접속한 장비의 납품·점검·수리 관련 공개 정보만 표시합니다.</div><span class="status">'+esc(x.status)+'</span></section><div class="grid"><section class="card"><h2>장비 기본 정보</h2>'+info(basic)+'</section><section class="card"><h2>납품 / 수리 이력</h2>'+info(hist)+'</section></div><section class="card"><h2>'+esc(x.maker)+' 자가 진단 · 조치 가이드</h2><table class="tbl"><thead><tr><th>장비 증상</th><th>예상 원인</th><th>간단 조치</th><th>문의 기준</th></tr></thead><tbody>'+g.map(v=>'<tr>'+v.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table><div class="warn">설정 변경 · 초기화 · Config 변경 · 강제 재부팅/reload 등 서비스 영향 가능 작업은 고객사 자가조치 범위에서 제외합니다.</div></section>'}
-</script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TIG KOREA 장비 이력</title>
+<style>
+:root{
+  --green:#3f948e;--green-dark:#2d6964;--green-soft:#eaf8f6;
+  --bg:#f4f7fa;--line:#dbe4ea;--text:#202a35;--muted:#6b7b89;
+  --white:#fff;--warn-bg:#fff7f2;--warn-line:#f1d8c7;--warn-text:#8a5131;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+.head{background:linear-gradient(100deg,#397d78,#4ca39c);color:#fff;padding:22px 24px;padding-top:max(22px,env(safe-area-inset-top))}
+.headin{max-width:960px;margin:auto;display:flex;align-items:center;gap:14px;min-width:0}
+.brand{font-size:22px;font-weight:900;white-space:nowrap}
+.pill{border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:6px 12px;font-weight:800;font-size:12px;white-space:nowrap}
+.notice{background:var(--green-soft);border-bottom:1px solid #bfe4df;color:#27645f;text-align:center;font-size:13px;font-weight:800;padding:12px 16px;line-height:1.5}
+.wrap{max-width:960px;margin:22px auto;padding:0 16px 36px;min-width:0}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(26,52,72,.06);margin-bottom:14px;min-width:0}
+.hero h1{margin:0 0 7px;font-size:30px;line-height:1.25;overflow-wrap:anywhere}
+.sub{color:var(--muted);font-size:13px;line-height:1.65}
+.status{display:inline-block;margin-top:10px;background:#eef6f5;color:#357a75;padding:6px 9px;border-radius:999px;font-size:11px;font-weight:900}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+h2{font-size:17px;margin:0 0 13px;color:var(--green-dark);line-height:1.35}
+.info{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.info-row{display:grid;grid-template-columns:145px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.info-row:last-child{border-bottom:0}
+.info-k,.info-v{padding:10px 12px;line-height:1.45;min-width:0}
+.info-k{background:#f7f9fb;font-weight:800;color:#536472}
+.info-v{overflow-wrap:anywhere;word-break:break-word}
+.tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;min-width:690px}
+.tbl th{background:var(--green);color:#fff;text-align:left;padding:10px}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;overflow-wrap:anywhere}
+.guide-mobile{display:none}
+.guide-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;margin-bottom:10px;background:#fff}
+.guide-card:last-child{margin-bottom:0}
+.guide-line{display:grid;grid-template-columns:88px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.guide-line:last-child{border-bottom:0}
+.guide-label{background:#f1f7f6;color:var(--green-dark);font-size:12px;font-weight:900;padding:10px}
+.guide-value{font-size:13px;line-height:1.5;padding:10px;overflow-wrap:anywhere}
+.warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-text);border-radius:10px;padding:11px 13px;margin-top:10px;font-size:11px;line-height:1.55}
+.bad{text-align:center;padding:55px 20px}
+.foot{text-align:center;color:#8996a0;font-size:11px;padding:12px 16px calc(28px + env(safe-area-inset-bottom))}
+
+@media(max-width:700px){
+  .head{padding:17px 14px;padding-top:max(17px,env(safe-area-inset-top))}
+  .headin{gap:9px;justify-content:space-between}
+  .brand{font-size:19px}
+  .pill{font-size:10px;padding:5px 9px}
+  .notice{font-size:11px;padding:10px 14px;line-height:1.55}
+  .wrap{margin:12px auto 0;padding:0 10px 26px}
+  .card{padding:15px;border-radius:15px;margin-bottom:10px;box-shadow:0 4px 14px rgba(26,52,72,.05)}
+  .hero h1{font-size:25px}
+  .sub{font-size:12px}
+  .grid{grid-template-columns:1fr;gap:10px}
+  h2{font-size:16px;margin-bottom:11px}
+  .info-row{grid-template-columns:1fr}
+  .info-k{padding:8px 10px 4px;background:#f7f9fb;font-size:11px;border-bottom:0}
+  .info-v{padding:4px 10px 9px;font-size:14px;background:#fff}
+  .tbl-wrap{display:none}
+  .guide-mobile{display:block}
+  .warn{font-size:11px;padding:10px 11px}
+}
+
+@media(max-width:380px){
+  .brand{font-size:17px}
+  .pill{font-size:9px;padding:4px 7px}
+  .hero h1{font-size:22px}
+  .card{padding:13px}
+  .guide-line{grid-template-columns:78px minmax(0,1fr)}
+  .guide-label{font-size:11px;padding:9px 8px}
+  .guide-value{font-size:12px;padding:9px}
+}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="headin">
+    <div class="brand">TIG KOREA</div>
+    <div class="pill">PUBLIC / CUSTOMER</div>
+  </div>
+</header>
+<div class="notice">QR에 연결된 해당 장비의 공개 가능 정보만 표시합니다. 관리자 전용 정보는 제공하지 않습니다.</div>
+<main class="wrap" id="app"></main>
+<div class="foot">TIG KOREA · 장비 이력 조회 시범안</div>
+
+<script src="data.js"></script>
+<script>
+const D=window.TIG_DATA||{equipment:[],guides:{}};
+const esc=v=>String(v??'-').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const id=new URLSearchParams(location.search).get('id');
+const x=D.equipment.find(v=>v.id===id);
+const app=document.getElementById('app');
+
+function info(rows){
+  return '<div class="info">'+rows.map(([k,v])=>
+    '<div class="info-row"><div class="info-k">'+esc(k)+'</div><div class="info-v">'+esc(v)+'</div></div>'
+  ).join('')+'</div>';
+}
+
+function guideDesktop(rows){
+  return '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>장비 증상</th><th>예상 원인</th><th>간단 조치</th><th>문의 기준</th></tr></thead><tbody>'+
+    rows.map(v=>'<tr>'+v.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+
+  '</tbody></table></div>';
+}
+
+function guideMobile(rows){
+  const labels=['장비 증상','예상 원인','간단 조치','문의 기준'];
+  return '<div class="guide-mobile">'+rows.map(v=>
+    '<div class="guide-card">'+v.map((c,i)=>
+      '<div class="guide-line"><div class="guide-label">'+labels[i]+'</div><div class="guide-value">'+esc(c)+'</div></div>'
+    ).join('')+'</div>'
+  ).join('')+'</div>';
+}
+
+if(!x){
+  app.innerHTML='<div class="card bad"><h2>장비 QR을 확인해 주세요</h2><p class="sub">해당 장비 정보를 찾을 수 없습니다.</p></div>';
+}else{
+  const g=D.guides[x.model]||D.guides[x.maker]||[];
+  const basic=[
+    ['장비 ID',x.id],['제조사',x.maker],['모델',x.model],['H/W 시리얼',x.sn],
+    ['시스템/현장',x.system!=='-'?x.system:x.site],['현재 상태',x.status]
+  ];
+  const hist=[
+    ['입고/납품 관련 일자',x.received],['설치일',x.install],['설치 위치',x.site],
+    ['최근 장애/이슈',x.issue],['수리 접수일',x.repair],['수리 횟수',x.repairCount+'회']
+  ];
+
+  app.innerHTML=
+    '<section class="card hero"><h1>'+esc(x.model)+' 장비 이력</h1><div class="sub">QR로 접속한 장비의 납품·점검·수리 관련 공개 정보만 표시합니다.</div><span class="status">'+esc(x.status)+'</span></section>'+
+    '<div class="grid">'+
+      '<section class="card"><h2>장비 기본 정보</h2>'+info(basic)+'</section>'+
+      '<section class="card"><h2>납품 / 수리 이력</h2>'+info(hist)+'</section>'+
+    '</div>'+
+    '<section class="card"><h2>'+esc(x.maker)+' 자가 진단 · 조치 가이드</h2>'+guideDesktop(g)+guideMobile(g)+
+      '<div class="warn">설정 변경 · 초기화 · Config 변경 · 강제 재부팅/reload 등 서비스 영향 가능 작업은 고객사 자가조치 범위에서 제외합니다.</div>'+
+    '</section>';
+}
+</script>
+</body>
+</html>
