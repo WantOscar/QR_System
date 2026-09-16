@@ -1,22 +1,179 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIG KOREA 납품 장비 이력 관리</title><style>
-:root{--navy:#14233a;--blue:#075985;--blue2:#0b74b5;--orange:#d97706;--bg:#f3f6f9;--line:#d8e1e8;--text:#1e2935;--muted:#667684;--green:#0f766e;--white:#fff;--shadow:0 10px 28px rgba(20,35,58,.08)}*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}.top{background:linear-gradient(100deg,#172033,#26354d);border-bottom:4px solid var(--orange);color:#fff;position:sticky;top:0;z-index:20}.topin{max-width:1220px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:10px}.brand{font-size:20px;font-weight:900}.pill{font-size:10px;font-weight:900;border:1px solid #f0c986;background:#fff1dc;color:#9a5700;border-radius:99px;padding:5px 9px}.desc{font-size:11px;opacity:.82}.actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:9px;padding:9px 12px;font-weight:800;cursor:pointer;text-decoration:none;font-size:12px}.btn.white{background:#fff;color:#172033}.btn.green{background:#e8f7f5;color:var(--green)}.btn.blue{background:var(--blue2);color:#fff}.btn.soft{background:#edf5fb;color:var(--blue);border:1px solid #cfe0ed}.btn.gray{background:#eef2f5;color:#455765}.notice{background:#fff3df;border-bottom:1px solid #efc57e;color:#855110;text-align:center;padding:9px 14px;font-size:12px;font-weight:700}.wrap{max-width:1220px;margin:20px auto;padding:0 18px 50px}.navline{display:flex;align-items:center;gap:8px;min-height:38px;margin-bottom:10px;flex-wrap:wrap}.crumb{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}.crumb span{color:#94a0aa}.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.hero{padding:24px;margin-bottom:15px}.hero h1{margin:0 0 8px;font-size:28px}.hero p{margin:0;color:var(--muted);line-height:1.65}.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.mode{padding:28px;cursor:pointer;transition:.15s}.mode:hover,.navcard:hover,.eqcard:hover{transform:translateY(-2px);border-color:#9ebfd5}.mode .ico{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;font-size:17px;font-weight:900;margin-bottom:15px}.mode.org .ico{background:#eaf4fb;color:var(--blue)}.mode.maker .ico{background:#e8f7f5;color:var(--green)}.mode h2{margin:0 0 8px;font-size:21px}.mode p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.title{display:flex;justify-content:space-between;align-items:end;margin:18px 2px 11px}.title h2{margin:0;font-size:19px}.hint{font-size:11px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.navcard,.eqcard{padding:18px;cursor:pointer;transition:.15s}.icon{width:50px;height:50px;border-radius:13px;background:#eaf4fb;color:var(--blue);display:grid;place-items:center;font-weight:900;margin-bottom:11px}.icon.green{background:#e8f7f5;color:var(--green)}.navcard h3,.eqcard h3{margin:0 0 6px;font-size:16px}.meta{color:var(--muted);font-size:12px;line-height:1.6}.count,.badge{display:inline-block;border-radius:99px;padding:5px 8px;font-size:10px;font-weight:900;background:#edf2f6;color:#526271}.count{margin-top:9px}.badge.ok{background:#ebf7ef;color:#2f7d46}.badge.warn{background:#fff4df;color:#8b630d}.badge.repair{background:#fff0f0;color:#a74242}.filters{display:grid;grid-template-columns:1.6fr 1fr auto;gap:10px;padding:13px;margin-bottom:14px}.input{border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;width:100%}.eqhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.eqhead h3{margin-right:auto}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.section{padding:19px}.section h2{font-size:16px;margin:0 0 13px;color:var(--blue)}.info{display:grid;grid-template-columns:155px 1fr;border:1px solid var(--line);border-radius:11px;overflow:hidden}.info div{padding:10px 11px;border-bottom:1px solid var(--line)}.info div:nth-last-child(-n+2){border-bottom:0}.k{background:#f7f9fb;color:#536472;font-weight:800}.serial{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.photoGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.photo{min-height:145px;border:1px dashed #b9c8d3;border-radius:12px;background:#f8fafc;display:grid;place-items:center;text-align:center;color:#81909c;font-size:12px;padding:15px}.guide{width:100%;border-collapse:collapse;font-size:12px}.guide th{background:var(--green);color:#fff;text-align:left;padding:9px}.guide td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}.warn{margin-top:10px;background:#fff7f2;border:1px solid #f0d5c3;color:#895134;border-radius:10px;padding:10px 12px;font-size:11px}.qrwrap{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center}.qrbox{width:190px;height:190px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:10px;display:grid;place-items:center}.qrtitle{font-size:14px;font-weight:900;margin-bottom:6px}.qrdesc{font-size:11px;color:var(--muted);line-height:1.6}.qrbuttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.empty{padding:45px;text-align:center;color:var(--muted)}
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIG KOREA 납품 장비 이력 관리</title>
+<style>
+:root{--navy:#172033;--blue:#075985;--blue2:#0b74b5;--orange:#d97706;--bg:#f3f6f9;--line:#d8e1e8;--text:#1e2935;--muted:#667684;--green:#0f766e;--white:#fff;--shadow:0 10px 28px rgba(20,35,58,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}.top{background:linear-gradient(100deg,#172033,#26354d);border-bottom:4px solid var(--orange);color:#fff;position:sticky;top:0;z-index:20}.topin{max-width:1220px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:10px}.brand{font-size:20px;font-weight:900}.pill{font-size:10px;font-weight:900;border:1px solid #f0c986;background:#fff1dc;color:#9a5700;border-radius:99px;padding:5px 9px}.desc{font-size:11px;opacity:.82}.actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:9px;padding:9px 12px;font-weight:800;cursor:pointer;text-decoration:none;font-size:12px}.btn.white{background:#fff;color:#172033}.btn.green{background:#e8f7f5;color:var(--green)}.btn.blue{background:var(--blue2);color:#fff}.btn.soft{background:#edf5fb;color:var(--blue);border:1px solid #cfe0ed}.btn.gray{background:#eef2f5;color:#455765}.notice{background:#fff3df;border-bottom:1px solid #efc57e;color:#855110;text-align:center;padding:9px 14px;font-size:12px;font-weight:700}.wrap{max-width:1220px;margin:20px auto;padding:0 18px 50px}.navline{display:flex;align-items:center;gap:8px;min-height:38px;margin-bottom:10px;flex-wrap:wrap}.crumb{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}.crumb span{color:#94a0aa}.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.hero{padding:24px;margin-bottom:15px}.hero h1{margin:0 0 8px;font-size:28px}.hero p{margin:0;color:var(--muted);line-height:1.65}.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.mode{padding:28px;cursor:pointer;transition:.15s}.mode:hover,.navcard:hover,.eqcard:hover{transform:translateY(-2px);border-color:#9ebfd5}.mode .ico{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;font-size:17px;font-weight:900;margin-bottom:15px}.mode.org .ico{background:#eaf4fb;color:var(--blue)}.mode.maker .ico{background:#e8f7f5;color:var(--green)}.mode h2{margin:0 0 8px;font-size:21px}.mode p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.title{display:flex;justify-content:space-between;align-items:end;margin:18px 2px 11px}.title h2{margin:0;font-size:19px}.hint{font-size:11px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.navcard,.eqcard{padding:18px;cursor:pointer;transition:.15s}.icon{width:50px;height:50px;border-radius:13px;background:#eaf4fb;color:var(--blue);display:grid;place-items:center;font-weight:900;margin-bottom:11px}.icon.green{background:#e8f7f5;color:var(--green)}.navcard h3,.eqcard h3{margin:0 0 6px;font-size:16px}.meta{color:var(--muted);font-size:12px;line-height:1.6}.count,.badge{display:inline-block;border-radius:99px;padding:5px 8px;font-size:10px;font-weight:900;background:#edf2f6;color:#526271}.count{margin-top:9px}.badge.ok{background:#ebf7ef;color:#2f7d46}.badge.warn{background:#fff4df;color:#8b630d}.badge.repair{background:#fff0f0;color:#a74242}.filters{display:grid;grid-template-columns:1.6fr 1fr auto;gap:10px;padding:13px;margin-bottom:14px}.input{border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;width:100%}.eqhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.eqhead h3{margin-right:auto}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.section{padding:19px}.section h2{font-size:16px;margin:0 0 13px;color:var(--blue)}.info{display:grid;grid-template-columns:155px 1fr;border:1px solid var(--line);border-radius:11px;overflow:hidden}.info div{padding:10px 11px;border-bottom:1px solid var(--line)}.info div:nth-last-child(-n+2){border-bottom:0}.k{background:#f7f9fb;color:#536472;font-weight:800}.serial{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.photoGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.photo{min-height:145px;border:1px dashed #b9c8d3;border-radius:12px;background:#f8fafc;display:grid;place-items:center;text-align:center;color:#81909c;font-size:12px;padding:15px}.guide{width:100%;border-collapse:collapse;font-size:12px}.guide th{background:var(--green);color:#fff;text-align:left;padding:9px}.guide td{padding:9px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}.warn{margin-top:10px;background:#fff7f2;border:1px solid #f0d5c3;color:#895134;border-radius:10px;padding:10px 12px;font-size:11px}.qrwrap{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center}.qrbox{width:190px;height:190px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:10px;display:grid;place-items:center}.qrtitle{font-size:14px;font-weight:900;margin-bottom:6px}.qrdesc{font-size:11px;color:var(--muted);line-height:1.6}.qrbuttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.empty{padding:45px;text-align:center;color:var(--muted)}
 @media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.modegrid{grid-template-columns:1fr}.detailgrid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.qrwrap{grid-template-columns:1fr}.qrbox{margin:auto}.photoGrid{grid-template-columns:1fr}}@media(max-width:580px){.grid{grid-template-columns:1fr}.topin{align-items:flex-start;flex-direction:column}.actions{margin-left:0}.desc{display:none}.info{grid-template-columns:125px 1fr}.hero h1{font-size:24px}.wrap{padding:0 12px 35px}}
-</style></head><body><header class="top"><div class="topin"><div class="brand">TIG KOREA</div><div class="pill">ADMIN / INTERNAL</div><div class="desc">기술1팀 납품 장비 이력 관리 시범 화면</div><div class="actions"><a class="btn green" href="qr-public.html">장비별 공개 QR</a><a class="btn white" href="public.html?id=EQ-009" target="_blank">공개화면 예시</a></div></div></header><div class="notice">시범 장비 20대 · 고객사/업체별 또는 제조사별로 탐색 · 실제 운영 단계에서는 서버 로그인·권한 제어·DB 분리를 적용합니다.</div><main class="wrap"><div class="navline"><button id="backBtn" class="btn gray" onclick="goBack()" style="display:none">← 이전 단계</button><button id="homeBtn" class="btn soft" onclick="goHome()" style="display:none">⌂ 처음으로</button><div id="crumb" class="crumb"></div></div><div id="app"></div></main><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script src="data.js"></script><script>
-const D=window.TIG_DATA,byId=Object.fromEntries(D.equipment.map(x=>[x.id,x]));const $=s=>document.querySelector(s),esc=v=>String(v??'-').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const uniq=a=>[...new Set(a.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));let current={view:'home',args:{}},stack=[];
-function go(view,args={}){stack.push(current);current={view,args};render()}function goBack(){if(stack.length){current=stack.pop();render()}}function goHome(){stack=[];current={view:'home',args:{}};render()}function publicUrl(id){return 'https://wantoscar.github.io/QR_System/public.html?id='+encodeURIComponent(id)}function badge(s){return s.includes('수리')?'repair':(s.includes('완료')?'ok':'warn')}function hero(t,p){return `<section class="card hero"><h1>${esc(t)}</h1><p>${esc(p)}</p></section>`}
-function setNav(labels=[]){$('#backBtn').style.display=stack.length?'inline-block':'none';$('#homeBtn').style.display=current.view==='home'?'none':'inline-block';$('#crumb').innerHTML=labels.map((x,i)=>`${i?'<span>›</span>':''}<b>${esc(x)}</b>`).join('')}
-function render(){const v=current.view,a=current.args;if(v==='home')return home();if(v==='orgs')return orgs();if(v==='branches')return branches(a.org);if(v==='sites')return sites(a.org,a.branch);if(v==='orgEquip')return orgEquip(a.org,a.branch,a.site);if(v==='makers')return makers();if(v==='models')return models(a.maker);if(v==='makerEquip')return makerEquip(a.maker,a.model);if(v==='detail')return detail(a.id,a.path||[])}
-function home(){setNav([]);const makers=uniq(D.equipment.map(x=>x.maker));const orgs=uniq(D.equipment.map(x=>x.org));$('#app').innerHTML=hero('납품 장비 이력 조회 방식 선택','같은 시범 장비 20대를 고객사/업체 기준과 제조사 기준 두 가지 방식으로 탐색할 수 있습니다.')+`<div class="modegrid"><article class="card mode org" onclick="go('orgs')"><div class="ico">ORG</div><h2>고객사 / 업체별</h2><p>고객사·업체 → 지사/관리그룹 → 현장 → 장비 순서로 조회합니다.</p><span class="count">${orgs.length}개 그룹 · 장비 ${D.equipment.length}대</span></article><article class="card mode maker" onclick="go('makers')"><div class="ico">MFG</div><h2>제조사별</h2><p>제조사 → 모델 → 장비 순서로 조회합니다. 시스코·넥스지·퓨쳐시스템을 시범 분류했습니다.</p><span class="count">${makers.length}개 제조사 · 장비 ${D.equipment.length}대</span></article></div>`}
-function orgs(){setNav(['고객사/업체별']);const os=uniq(D.equipment.map(x=>x.org));$('#app').innerHTML=hero('고객사 / 업체별 납품 장비 관리','업체를 선택한 뒤 지사·관리그룹 → 현장 → 장비 순서로 확인합니다.')+`<div class="title"><h2>고객사 / 업체</h2><span class="hint">${os.length}개 그룹</span></div><div class="grid">${os.map(o=>{const r=D.equipment.filter(x=>x.org===o);return `<article class="card navcard" onclick='go("branches",{org:${JSON.stringify(o)}})'><div class="icon">ORG</div><h3>${esc(o)}</h3><div class="meta">지사/관리그룹 ${uniq(r.map(x=>x.branch)).length}개<br>현장 ${uniq(r.map(x=>x.site)).length}개</div><span class="count">장비 ${r.length}대</span></article>`}).join('')}</div>`}
-function branches(org){setNav(['고객사/업체별',org]);const r=D.equipment.filter(x=>x.org===org),bs=uniq(r.map(x=>x.branch));$('#app').innerHTML=hero(org,org==='한국농어촌공사'?'지사별로 분류합니다.':'관리그룹별로 분류합니다.')+`<div class="title"><h2>${org==='한국농어촌공사'?'지사':'관리그룹'}</h2><span class="hint">장비 ${r.length}대</span></div><div class="grid">${bs.map(b=>{const z=r.filter(x=>x.branch===b);return `<article class="card navcard" onclick='go("sites",{org:${JSON.stringify(org)},branch:${JSON.stringify(b)}})'><div class="icon">BR</div><h3>${esc(b)}</h3><div class="meta">현장 ${uniq(z.map(x=>x.site)).length}개</div><span class="count">장비 ${z.length}대</span></article>`}).join('')}</div>`}
-function sites(org,branch){setNav(['고객사/업체별',org,branch]);const r=D.equipment.filter(x=>x.org===org&&x.branch===branch),ss=uniq(r.map(x=>x.site));$('#app').innerHTML=hero(branch,'현장을 선택하면 해당 위치에 연결된 시범 장비를 확인합니다.')+`<div class="title"><h2>현장</h2><span class="hint">${ss.length}개</span></div><div class="grid">${ss.map(s=>{const z=r.filter(x=>x.site===s);return `<article class="card navcard" onclick='go("orgEquip",{org:${JSON.stringify(org)},branch:${JSON.stringify(branch)},site:${JSON.stringify(s)}})'><div class="icon">SITE</div><h3>${esc(s)}</h3><div class="meta">${uniq(z.map(x=>x.maker)).join(' · ')}<br>${uniq(z.map(x=>x.model)).join(' · ')}</div><span class="count">장비 ${z.length}대</span></article>`}).join('')}</div>`}
-function equipList(rows,path){return `<div class="card filters"><input id="q" class="input" placeholder="모델 / 시리얼 / 장비ID 검색"><select id="st" class="input"><option value="">전체 상태</option>${uniq(rows.map(x=>x.status)).map(x=>`<option>${esc(x)}</option>`).join('')}</select><button class="btn blue" onclick="filterReset()">초기화</button></div><div id="eqgrid" class="grid"></div><script type="application/json" id="pathdata">${esc(JSON.stringify(path))}</script>`}
-function bindEquip(rows,path){const draw=()=>{const q=$('#q').value.trim().toLowerCase(),st=$('#st').value;const f=rows.filter(x=>(!q||[x.id,x.maker,x.model,x.sn,x.site].join(' ').toLowerCase().includes(q))&&(!st||x.status===st));$('#eqgrid').innerHTML=f.length?f.map(x=>`<article class="card eqcard" onclick='go("detail",{id:${JSON.stringify(x.id)},path:${JSON.stringify(path)}})'><div class="eqhead"><h3>${esc(x.model)}</h3><span class="badge ${badge(x.status)}">${esc(x.status)}</span><span class="badge">${esc(x.id)}</span></div><div class="meta"><b>${esc(x.maker)}</b><br><span class="serial">${esc(x.sn)}</span><br>${esc(x.site)}<br>최근 이슈: ${esc(x.issue)}</div></article>`).join(''):'<div class="card empty">조건에 맞는 장비가 없습니다.</div>'};$('#q').oninput=draw;$('#st').onchange=draw;window.filterReset=()=>{$('#q').value='';$('#st').value='';draw()};draw()}
-function orgEquip(org,branch,site){setNav(['고객사/업체별',org,branch,site]);const r=D.equipment.filter(x=>x.org===org&&x.branch===branch&&x.site===site),path=['고객사/업체별',org,branch,site];$('#app').innerHTML=hero(site,'해당 현장에 등록된 장비입니다. 장비를 선택하면 납품·수리 이력과 QR을 확인합니다.')+equipList(r,path);bindEquip(r,path)}
-function makers(){setNav(['제조사별']);const ms=uniq(D.equipment.map(x=>x.maker));$('#app').innerHTML=hero('제조사별 납품 장비 관리','제조사를 선택한 뒤 모델 → 장비 순서로 확인합니다.')+`<div class="title"><h2>제조사</h2><span class="hint">${ms.length}개</span></div><div class="grid">${ms.map(m=>{const r=D.equipment.filter(x=>x.maker===m);return `<article class="card navcard" onclick='go("models",{maker:${JSON.stringify(m)}})'><div class="icon green">MFG</div><h3>${esc(m)}</h3><div class="meta">모델 ${uniq(r.map(x=>x.model)).length}종</div><span class="count">장비 ${r.length}대</span></article>`}).join('')}</div>`}
-function models(maker){setNav(['제조사별',maker]);const r=D.equipment.filter(x=>x.maker===maker),ms=uniq(r.map(x=>x.model));$('#app').innerHTML=hero(maker,'모델별로 분류된 장비를 확인합니다.')+`<div class="title"><h2>모델</h2><span class="hint">${ms.length}종</span></div><div class="grid">${ms.map(m=>{const z=r.filter(x=>x.model===m);return `<article class="card navcard" onclick='go("makerEquip",{maker:${JSON.stringify(maker)},model:${JSON.stringify(m)}})'><div class="icon green">MODEL</div><h3>${esc(m)}</h3><div class="meta">상태: ${uniq(z.map(x=>x.status)).join(' · ')}</div><span class="count">장비 ${z.length}대</span></article>`}).join('')}</div>`}
-function makerEquip(maker,model){setNav(['제조사별',maker,model]);const r=D.equipment.filter(x=>x.maker===maker&&x.model===model),path=['제조사별',maker,model];$('#app').innerHTML=hero(model,`${maker} ${model} 시범 장비 목록입니다.`)+equipList(r,path);bindEquip(r,path)}
-function info(rows){return `<div class="info">${rows.map(([k,v])=>`<div class="k">${esc(k)}</div><div>${esc(v)}</div>`).join('')}</div>`}function detail(id,path){const x=byId[id];if(!x)return;setNav([...path,x.model+' · '+x.id]);const basic=[['장비 ID',x.id],['제조사',x.maker],['모델',x.model],['H/W 시리얼',x.sn],['시스템 ID',x.system],['현재 상태',x.status]];const hist=[['고객사/업체',x.org],['지사/관리그룹',x.branch],['현장/설치 위치',x.site],['입고일자',x.received],['입고장소',x.receivedPlace],['설치일자',x.install],['최근 고장 증상',x.issue],['수리 접수일',x.repair],['수리 횟수',x.repairCount+'회']];const g=D.guides[x.model]||D.guides[x.maker]||[];$('#app').innerHTML=`${hero(x.model+' · '+x.id,'장비 기본 정보, 납품/수리 이력, 사진 영역, 자가진단 가이드와 장비 전용 QR을 한 화면에서 확인합니다.')}<div class="detailgrid"><section class="card section"><h2>장비 기본 정보</h2>${info(basic)}</section><section class="card section"><h2>납품 / 점검 / 수리 이력</h2>${info(hist)}</section></div><section class="card section" style="margin-top:14px"><h2>장비 / 현장 사진</h2><div class="photoGrid"><div class="photo">📷<br><b>장비 외관 사진</b><br>시범 데이터 사진 미등록</div><div class="photo">📍<br><b>설치·현장 사진</b><br>시범 데이터 사진 미등록</div></div></section><section class="card section" style="margin-top:14px"><h2>${esc(x.maker)} 자가 진단 / 조치 가이드</h2><table class="guide"><thead><tr><th>장비 증상</th><th>예상 원인</th><th>간단 조치</th><th>문의 기준</th></tr></thead><tbody>${g.map(v=>`<tr>${v.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="warn">설정 변경 · 초기화 · Config 변경 · 강제 재부팅/reload 등 서비스 영향 가능 작업은 고객사 자가조치 범위에서 제외합니다.</div></section><section class="card section" style="margin-top:14px"><h2>이 장비 전용 QR</h2><div class="qrwrap"><div class="qrbox" id="qrbox"></div><div><div class="qrtitle">휴대폰 카메라로 스캔하세요</div><div class="qrdesc">${esc(x.model)} · ${esc(x.id)}의 고객사 공개 화면으로만 연결됩니다.</div><div class="qrbuttons"><button class="btn blue" onclick="window.open(publicUrl('${x.id}'),'_blank')">휴대폰 화면 열기</button><button class="btn soft" onclick="saveQr('${x.id}')">QR 저장</button><button class="btn soft" onclick="copyLink('${x.id}')">전용 링크 복사</button><button class="btn gray" onclick="printQr('${x.id}')">QR 인쇄</button></div></div></div></section>`;drawQr(x.id)}
-function drawQr(id){const b=$('#qrbox');b.innerHTML='';new QRCode(b,{text:publicUrl(id),width:168,height:168,colorDark:'#073b60',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M})}function qrData(){const c=$('#qrbox canvas');if(c)return c.toDataURL('image/png');const i=$('#qrbox img');return i?i.src:''}function saveQr(id){const a=document.createElement('a');a.download=id+'_QR.png';a.href=qrData();a.click()}async function copyLink(id){try{await navigator.clipboard.writeText(publicUrl(id));alert('장비 전용 링크를 복사했습니다.')}catch(e){prompt('아래 링크를 복사하세요.',publicUrl(id))}}function printQr(id){const x=byId[id],w=window.open('','_blank');if(!w)return alert('팝업을 허용해 주세요.');const img=qrData();w.document.write(`<meta charset="utf-8"><title>${x.model} ${x.id} QR</title><style>@page{size:A4;margin:18mm}body{font-family:Arial,'Malgun Gothic';text-align:center}.sheet{border:2px solid #073b60;border-radius:16px;padding:28px;max-width:520px;margin:30px auto}img{width:280px}.b{font-size:28px;font-weight:900}.s{color:#667684;margin:8px}.p{margin:15px;padding:10px 16px;background:#0f766e;color:#fff;border:0;border-radius:8px}@media print{.p{display:none}}</style><div class="sheet"><h3>TIG KOREA · 장비 이력 조회</h3><div class="b">${esc(x.model)} · ${esc(x.id)}</div><div class="s">${esc(x.maker)} / ${esc(x.site)}</div><img src="${img}"><p>QR을 스캔하면 이 장비의 공개 정보만 열립니다.</p><button class="p" onclick="print()">인쇄</button></div>`);w.document.close()}
-render();
-</script></body></html>
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><div class="brand">TIG KOREA</div><div class="pill">ADMIN / INTERNAL</div><div class="desc">기술1팀 납품 장비 이력 관리 시범 화면</div><div class="actions"><a class="btn green" href="qr-public.html">장비별 공개 QR</a><a class="btn white" href="public.html?id=EQ-009" target="_blank">공개화면 예시</a></div></div></header>
+<div class="notice">시범 장비 20대 · 고객사/업체별 또는 제조사별로 탐색 · 실제 운영 단계에서는 서버 로그인·권한 제어·DB 분리를 적용합니다.</div>
+<main class="wrap"><div class="navline"><button id="backBtn" class="btn gray" style="display:none">← 이전 단계</button><button id="homeBtn" class="btn soft" style="display:none">⌂ 처음으로</button><div id="crumb" class="crumb"></div></div><div id="app"></div></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+  const params=new URLSearchParams(location.search);
+  const directId=params.get('id');
+  if(directId){ location.replace('public.html?id='+encodeURIComponent(directId)); return; }
+
+  const D=window.TIG_DATA||{equipment:[],guides:{}};
+  const byId=Object.fromEntries(D.equipment.map(x=>[x.id,x]));
+  const app=document.getElementById('app');
+  const backBtn=document.getElementById('backBtn');
+  const homeBtn=document.getElementById('homeBtn');
+  const crumb=document.getElementById('crumb');
+  const uniq=a=>[...new Set(a.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));
+  const esc=v=>String(v??'-').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  const enc=o=>encodeURIComponent(JSON.stringify(o||{}));
+  const dec=s=>{try{return JSON.parse(decodeURIComponent(s||'%7B%7D'))}catch(e){return {}}};
+  let state={view:'home',args:{}};
+  let stack=[];
+
+  function hero(title,desc){return `<section class="card hero"><h1>${esc(title)}</h1><p>${esc(desc)}</p></section>`}
+  function badgeClass(status){return String(status).includes('수리')?'repair':String(status).includes('완료')?'ok':'warn'}
+  function navLabels(labels){backBtn.style.display=stack.length?'inline-block':'none';homeBtn.style.display=state.view==='home'?'none':'inline-block';crumb.innerHTML=labels.map((x,i)=>`${i?'<span>›</span>':''}<b>${esc(x)}</b>`).join('')}
+  function go(view,args={}){stack.push(state);state={view,args};render()}
+  function goBack(){if(stack.length){state=stack.pop();render()}}
+  function goHome(){stack=[];state={view:'home',args:{}};render()}
+  backBtn.addEventListener('click',goBack);homeBtn.addEventListener('click',goHome);
+
+  app.addEventListener('click',e=>{
+    const nav=e.target.closest('[data-nav]');
+    if(nav){go(nav.dataset.nav,dec(nav.dataset.args));return;}
+    const action=e.target.closest('[data-action]');
+    if(!action)return;
+    const id=action.dataset.id;
+    if(action.dataset.action==='open-public') window.open(publicUrl(id),'_blank');
+    if(action.dataset.action==='save-qr') saveQr(id);
+    if(action.dataset.action==='copy-link') copyLink(id);
+    if(action.dataset.action==='print-qr') printQr(id);
+  });
+
+  function render(){
+    const v=state.view,a=state.args;
+    if(v==='home') return renderHome();
+    if(v==='orgs') return renderOrgs();
+    if(v==='branches') return renderBranches(a.org);
+    if(v==='sites') return renderSites(a.org,a.branch);
+    if(v==='orgEquip') return renderOrgEquip(a.org,a.branch,a.site);
+    if(v==='makers') return renderMakers();
+    if(v==='models') return renderModels(a.maker);
+    if(v==='makerEquip') return renderMakerEquip(a.maker,a.model);
+    if(v==='detail') return renderDetail(a.id,a.path||[]);
+  }
+
+  function renderHome(){
+    navLabels([]);
+    const orgs=uniq(D.equipment.map(x=>x.org)), makers=uniq(D.equipment.map(x=>x.maker));
+    app.innerHTML=hero('납품 장비 이력 조회 방식 선택','같은 시범 장비 20대를 고객사/업체 기준과 제조사 기준 두 가지 방식으로 탐색할 수 있습니다.')+
+    `<div class="modegrid">
+      <article class="card mode org" data-nav="orgs" data-args="${enc({})}"><div class="ico">ORG</div><h2>고객사 / 업체별</h2><p>고객사·업체 → 지사/관리그룹 → 현장 → 장비 순서로 조회합니다.</p><span class="count">${orgs.length}개 그룹 · 장비 ${D.equipment.length}대</span></article>
+      <article class="card mode maker" data-nav="makers" data-args="${enc({})}"><div class="ico">MFG</div><h2>제조사별</h2><p>제조사 → 모델 → 장비 순서로 조회합니다. 시스코·넥스지·퓨쳐시스템을 시범 분류했습니다.</p><span class="count">${makers.length}개 제조사 · 장비 ${D.equipment.length}대</span></article>
+    </div>`;
+  }
+
+  function renderOrgs(){
+    navLabels(['고객사/업체별']);
+    const orgs=uniq(D.equipment.map(x=>x.org));
+    app.innerHTML=hero('고객사 / 업체별 납품 장비 관리','업체를 선택한 뒤 지사·관리그룹 → 현장 → 장비 순서로 확인합니다.')+
+      `<div class="title"><h2>고객사 / 업체</h2><span class="hint">${orgs.length}개 그룹</span></div><div class="grid">`+
+      orgs.map(org=>{const rows=D.equipment.filter(x=>x.org===org);return `<article class="card navcard" data-nav="branches" data-args="${enc({org})}"><div class="icon">ORG</div><h3>${esc(org)}</h3><div class="meta">지사/관리그룹 ${uniq(rows.map(x=>x.branch)).length}개<br>현장 ${uniq(rows.map(x=>x.site)).length}개</div><span class="count">장비 ${rows.length}대</span></article>`}).join('')+'</div>';
+  }
+
+  function renderBranches(org){
+    navLabels(['고객사/업체별',org]);
+    const rows=D.equipment.filter(x=>x.org===org), branches=uniq(rows.map(x=>x.branch));
+    app.innerHTML=hero(org,org==='한국농어촌공사'?'지사별로 분류합니다.':'관리그룹별로 분류합니다.')+
+      `<div class="title"><h2>${org==='한국농어촌공사'?'지사':'관리그룹'}</h2><span class="hint">장비 ${rows.length}대</span></div><div class="grid">`+
+      branches.map(branch=>{const r=rows.filter(x=>x.branch===branch);return `<article class="card navcard" data-nav="sites" data-args="${enc({org,branch})}"><div class="icon">BR</div><h3>${esc(branch)}</h3><div class="meta">현장 ${uniq(r.map(x=>x.site)).length}개</div><span class="count">장비 ${r.length}대</span></article>`}).join('')+'</div>';
+  }
+
+  function renderSites(org,branch){
+    navLabels(['고객사/업체별',org,branch]);
+    const rows=D.equipment.filter(x=>x.org===org&&x.branch===branch), sites=uniq(rows.map(x=>x.site));
+    app.innerHTML=hero(branch,'현장을 선택하면 해당 위치에 연결된 시범 장비를 확인합니다.')+
+      `<div class="title"><h2>현장</h2><span class="hint">${sites.length}개</span></div><div class="grid">`+
+      sites.map(site=>{const r=rows.filter(x=>x.site===site);return `<article class="card navcard" data-nav="orgEquip" data-args="${enc({org,branch,site})}"><div class="icon">SITE</div><h3>${esc(site)}</h3><div class="meta">${uniq(r.map(x=>x.maker)).join(' · ')}<br>${uniq(r.map(x=>x.model)).join(' · ')}</div><span class="count">장비 ${r.length}대</span></article>`}).join('')+'</div>';
+  }
+
+  function equipmentShell(rows){
+    return `<div class="card filters"><input id="q" class="input" placeholder="모델 / 시리얼 / 장비ID 검색"><select id="st" class="input"><option value="">전체 상태</option>${uniq(rows.map(x=>x.status)).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select><button id="resetFilter" class="btn blue">초기화</button></div><div id="eqgrid" class="grid"></div>`;
+  }
+
+  function bindEquipment(rows,path){
+    const q=document.getElementById('q'), st=document.getElementById('st'), grid=document.getElementById('eqgrid'), reset=document.getElementById('resetFilter');
+    const draw=()=>{
+      const query=q.value.trim().toLowerCase(), status=st.value;
+      const filtered=rows.filter(x=>(!query||[x.id,x.maker,x.model,x.sn,x.site].join(' ').toLowerCase().includes(query))&&(!status||x.status===status));
+      grid.innerHTML=filtered.length?filtered.map(x=>`<article class="card eqcard" data-nav="detail" data-args="${enc({id:x.id,path})}"><div class="eqhead"><h3>${esc(x.model)}</h3><span class="badge ${badgeClass(x.status)}">${esc(x.status)}</span><span class="badge">${esc(x.id)}</span></div><div class="meta"><b>${esc(x.maker)}</b><br><span class="serial">${esc(x.sn)}</span><br>${esc(x.site)}<br>최근 이슈: ${esc(x.issue)}</div></article>`).join(''):'<div class="card empty">조건에 맞는 장비가 없습니다.</div>';
+    };
+    q.addEventListener('input',draw);st.addEventListener('change',draw);reset.addEventListener('click',()=>{q.value='';st.value='';draw()});draw();
+  }
+
+  function renderOrgEquip(org,branch,site){
+    navLabels(['고객사/업체별',org,branch,site]);
+    const rows=D.equipment.filter(x=>x.org===org&&x.branch===branch&&x.site===site), path=['고객사/업체별',org,branch,site];
+    app.innerHTML=hero(site,'해당 현장에 등록된 장비입니다. 장비를 선택하면 납품·수리 이력과 QR을 확인합니다.')+equipmentShell(rows);bindEquipment(rows,path);
+  }
+
+  function renderMakers(){
+    navLabels(['제조사별']);
+    const makers=uniq(D.equipment.map(x=>x.maker));
+    app.innerHTML=hero('제조사별 납품 장비 관리','제조사를 선택한 뒤 모델 → 장비 순서로 확인합니다.')+
+      `<div class="title"><h2>제조사</h2><span class="hint">${makers.length}개</span></div><div class="grid">`+
+      makers.map(maker=>{const rows=D.equipment.filter(x=>x.maker===maker);return `<article class="card navcard" data-nav="models" data-args="${enc({maker})}"><div class="icon green">MFG</div><h3>${esc(maker)}</h3><div class="meta">모델 ${uniq(rows.map(x=>x.model)).length}종</div><span class="count">장비 ${rows.length}대</span></article>`}).join('')+'</div>';
+  }
+
+  function renderModels(maker){
+    navLabels(['제조사별',maker]);
+    const rows=D.equipment.filter(x=>x.maker===maker), models=uniq(rows.map(x=>x.model));
+    app.innerHTML=hero(maker,'모델별로 분류된 장비를 확인합니다.')+
+      `<div class="title"><h2>모델</h2><span class="hint">${models.length}종</span></div><div class="grid">`+
+      models.map(model=>{const r=rows.filter(x=>x.model===model);return `<article class="card navcard" data-nav="makerEquip" data-args="${enc({maker,model})}"><div class="icon green">MODEL</div><h3>${esc(model)}</h3><div class="meta">상태: ${uniq(r.map(x=>x.status)).join(' · ')}</div><span class="count">장비 ${r.length}대</span></article>`}).join('')+'</div>';
+  }
+
+  function renderMakerEquip(maker,model){
+    navLabels(['제조사별',maker,model]);
+    const rows=D.equipment.filter(x=>x.maker===maker&&x.model===model), path=['제조사별',maker,model];
+    app.innerHTML=hero(model,`${maker} ${model} 시범 장비 목록입니다.`)+equipmentShell(rows);bindEquipment(rows,path);
+  }
+
+  function info(rows){return `<div class="info">${rows.map(([k,v])=>`<div class="k">${esc(k)}</div><div>${esc(v)}</div>`).join('')}</div>`}
+  function publicUrl(id){return 'https://wantoscar.github.io/QR_System/public.html?id='+encodeURIComponent(id)}
+
+  function renderDetail(id,path){
+    const x=byId[id];if(!x)return;
+    navLabels([...path,x.model+' · '+x.id]);
+    const basic=[['장비 ID',x.id],['제조사',x.maker],['모델',x.model],['H/W 시리얼',x.sn],['시스템 ID',x.system],['현재 상태',x.status]];
+    const hist=[['고객사/업체',x.org],['지사/관리그룹',x.branch],['현장/설치 위치',x.site],['입고일자',x.received],['입고장소',x.receivedPlace],['설치일자',x.install],['최근 고장 증상',x.issue],['수리 접수일',x.repair],['수리 횟수',x.repairCount+'회']];
+    const guide=D.guides[x.model]||D.guides[x.maker]||[];
+    app.innerHTML=hero(x.model+' · '+x.id,'장비 기본 정보, 납품/수리 이력, 사진 영역, 자가진단 가이드와 장비 전용 QR을 한 화면에서 확인합니다.')+
+      `<div class="detailgrid"><section class="card section"><h2>장비 기본 정보</h2>${info(basic)}</section><section class="card section"><h2>납품 / 점검 / 수리 이력</h2>${info(hist)}</section></div>
+      <section class="card section" style="margin-top:14px"><h2>장비 / 현장 사진</h2><div class="photoGrid"><div class="photo">📷<br><b>장비 외관 사진</b><br>시범 데이터 사진 미등록</div><div class="photo">📍<br><b>설치·현장 사진</b><br>시범 데이터 사진 미등록</div></div></section>
+      <section class="card section" style="margin-top:14px"><h2>${esc(x.maker)} 자가 진단 / 조치 가이드</h2><table class="guide"><thead><tr><th>장비 증상</th><th>예상 원인</th><th>간단 조치</th><th>문의 기준</th></tr></thead><tbody>${guide.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="warn">설정 변경 · 초기화 · Config 변경 · 강제 재부팅/reload 등 서비스 영향 가능 작업은 고객사 자가조치 범위에서 제외합니다.</div></section>
+      <section class="card section" style="margin-top:14px"><h2>이 장비 전용 QR</h2><div class="qrwrap"><div class="qrbox" id="qrbox"></div><div><div class="qrtitle">휴대폰 카메라로 스캔하세요</div><div class="qrdesc">${esc(x.model)} · ${esc(x.id)}의 고객사 공개 화면으로만 연결됩니다.</div><div class="qrbuttons"><button class="btn blue" data-action="open-public" data-id="${esc(x.id)}">휴대폰 화면 열기</button><button class="btn soft" data-action="save-qr" data-id="${esc(x.id)}">QR 저장</button><button class="btn soft" data-action="copy-link" data-id="${esc(x.id)}">전용 링크 복사</button><button class="btn gray" data-action="print-qr" data-id="${esc(x.id)}">QR 인쇄</button></div></div></div></section>`;
+    drawQr(x.id);
+  }
+
+  function drawQr(id){
+    const box=document.getElementById('qrbox');if(!box)return;box.innerHTML='';
+    if(window.QRCode){new QRCode(box,{text:publicUrl(id),width:168,height:168,colorDark:'#073b60',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}
+    else{box.innerHTML='<div class="meta">QR 생성 라이브러리를 불러오지 못했습니다.</div>';}
+  }
+  function qrData(){const canvas=document.querySelector('#qrbox canvas');if(canvas)return canvas.toDataURL('image/png');const img=document.querySelector('#qrbox img');return img?img.src:''}
+  function saveQr(id){const href=qrData();if(!href)return alert('QR이 아직 생성되지 않았습니다.');const a=document.createElement('a');a.download=id+'_QR.png';a.href=href;a.click()}
+  async function copyLink(id){try{await navigator.clipboard.writeText(publicUrl(id));alert('장비 전용 링크를 복사했습니다.')}catch(e){prompt('아래 링크를 복사하세요.',publicUrl(id))}}
+  function printQr(id){const x=byId[id],img=qrData(),w=window.open('','_blank');if(!w)return alert('팝업을 허용해 주세요.');w.document.write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>'+esc(x.model)+' '+esc(x.id)+' QR</title><style>@page{size:A4;margin:18mm}body{font-family:Arial,"Malgun Gothic";text-align:center}.sheet{border:2px solid #073b60;border-radius:16px;padding:28px;max-width:520px;margin:30px auto}img{width:280px}.b{font-size:28px;font-weight:900}.s{color:#667684;margin:8px}.p{margin:15px;padding:10px 16px;background:#0f766e;color:#fff;border:0;border-radius:8px}@media print{.p{display:none}}</style></head><body><div class="sheet"><h3>TIG KOREA · 장비 이력 조회</h3><div class="b">'+esc(x.model)+' · '+esc(x.id)+'</div><div class="s">'+esc(x.maker)+' / '+esc(x.site)+'</div><img src="'+img+'"><p>QR을 스캔하면 이 장비의 공개 정보만 열립니다.</p><button class="p" onclick="print()">인쇄</button></div></body></html>');w.document.close()}
+
+  if(!D.equipment.length){app.innerHTML='<div class="card empty">장비 데이터를 불러오지 못했습니다. data.js를 확인해 주세요.</div>';return;}
+  render();
+})();
+</script>
+</body>
+</html>
