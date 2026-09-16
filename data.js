@@ -39,3 +39,33 @@ window.TIG_DATA={
     ]
   }
 };
+
+// 제조사별 탐색에서는 넥스지를 제외하되, 고객사/업체별 탐색과 장비 상세 데이터는 그대로 유지합니다.
+(function(){
+  const eq=window.TIG_DATA.equipment;
+  const nativeMap=Array.prototype.map;
+  Object.defineProperty(eq,'map',{
+    configurable:true,
+    writable:true,
+    value:function(callback,thisArg){
+      const result=nativeMap.call(this,callback,thisArg);
+      if(this===eq && result.length===eq.length && result.every(v=>typeof v==='string') && result.includes('퓨쳐시스템') && result.includes('시스코') && result.includes('넥스지')){
+        return result.map(v=>v==='넥스지'?'':v);
+      }
+      return result;
+    }
+  });
+
+  function fixManufacturerSummary(){
+    const makerMode=document.querySelector('.mode.maker');
+    if(makerMode){
+      const p=makerMode.querySelector('p');
+      const count=makerMode.querySelector('.count');
+      if(p) p.textContent='제조사 → 모델 → 장비 순서로 조회합니다. 시스코·퓨쳐시스템을 시범 분류했습니다.';
+      if(count) count.textContent='2개 제조사 · 장비 15대';
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fixManufacturerSummary);
+  else fixManufacturerSummary();
+  new MutationObserver(fixManufacturerSummary).observe(document.documentElement,{childList:true,subtree:true});
+})();
