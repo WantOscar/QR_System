@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIG KOREA 장비별 공개 QR</title>
+<style>body{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;margin:0;background:#f4f7fa;color:#1d2935}.wrap{max-width:1000px;margin:30px auto;padding:0 18px}.head{display:flex;align-items:center;gap:10px;margin-bottom:18px}.pill{font-size:10px;font-weight:900;background:#e8f7f5;color:#0f766e;border-radius:99px;padding:5px 9px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:#fff;border:1px solid #dce4eb;border-radius:16px;padding:16px}.top{display:flex;align-items:center;gap:8px}.top h3{margin:0;font-size:17px}.meta{font-size:11px;color:#667684;margin:6px 0 12px;line-height:1.5}.qr{width:170px;height:170px}.url{font-size:10px;color:#667684;word-break:break-all;margin-top:8px}.actions{margin-left:auto}.btn{border:0;border-radius:9px;background:#0f766e;color:#fff;padding:9px 12px;font-weight:800;cursor:pointer}@media(max-width:650px){.grid{grid-template-columns:1fr}}@media print{.actions{display:none}.wrap{max-width:none;margin:0}.card{break-inside:avoid}}</style>
+</head>
+<body><div class="wrap"><div class="head"><h1 style="margin:0;font-size:25px">장비별 고객사 공개 QR</h1><span class="pill">PUBLIC QR</span><div class="actions"><button class="btn" onclick="print()">인쇄 / PDF 저장</button></div></div><p style="color:#667684;font-size:12px">각 QR은 <b>public.html?id=장비ID</b>로 연결되어 해당 장비의 공개 정보만 표시합니다.</p><div id="grid" class="grid"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const rows=[
+['EQ-001','XTM365','용문저수지'],['EQ-002','FW410','갈천저수지 방수문'],['EQ-003','XTM365Z','남창보(영광공구)'],['EQ-004','XTM365','남산2제'],['EQ-005','FW410','광주호소수력발전소'],['EQ-006','FW410','장암1배수문'],['EQ-007','FW750','미지정 현장'],['EQ-008','XTM365','화순_영벽취입보'],['EQ-009','FW410','풍남향 사업소'],['EQ-010','FML50S','광주_무산양수장']];
+const base='https://wantoscar.github.io/QR_System/public.html?id=';const g=document.getElementById('grid');
+rows.forEach(([id,model,site])=>{const url=base+encodeURIComponent(id);const c=document.createElement('div');c.className='card';c.innerHTML='<div class="top"><h3>'+model+' · '+id+'</h3></div><div class="meta">'+site+'</div><div class="qr"></div><div class="url">'+url+'</div>';g.appendChild(c);new QRCode(c.querySelector('.qr'),{text:url,width:170,height:170,colorDark:'#073b60',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})});
+</script></body></html>
