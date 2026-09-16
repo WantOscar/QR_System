@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIG KOREA 고객사 장비 조회</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:#f4f7fa;color:#17313b}.public-head{height:64px;background:linear-gradient(100deg,#0f766e,#0ea5a0);color:#fff;display:flex;align-items:center;padding:0 18px;gap:10px;box-shadow:0 3px 12px rgba(0,0,0,.14);position:relative;z-index:2}.brand{font-size:19px;font-weight:800}.pill{font-size:10px;font-weight:900;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.17);border-radius:99px;padding:5px 9px}.desc{margin-left:auto;font-size:11px;opacity:.88}.notice{height:42px;background:#e9f9f6;border-bottom:1px solid #a7e3dd;color:#0d615b;display:flex;align-items:center;justify-content:center;padding:0 14px;font-size:12px;font-weight:700;text-align:center}.frame{width:100%;height:calc(100% - 106px);border:0;background:#f4f7fa}.bad{max-width:600px;margin:60px auto;background:#fff;border:1px solid #dce4eb;border-radius:16px;padding:28px;text-align:center}@media(max-width:650px){.desc{display:none}.brand{font-size:17px}.public-head{height:58px}.notice{height:48px}.frame{height:calc(100% - 106px)}}
+</style>
+</head>
+<body>
+<div class="public-head"><div class="brand">TIG KOREA</div><div class="pill">PUBLIC / CUSTOMER</div><div class="desc">고객사 공개용 장비 이력 조회</div></div>
+<div class="notice">이 화면은 QR에 연결된 해당 장비의 공개 가능 정보만 표시합니다. 관리자 전용 정보는 제공하지 않습니다.</div>
+<div id="root"></div>
+<script>
+const q=new URLSearchParams(location.search),id=q.get('id');
+const valid=/^EQ-\d{3}$/.test(id||'');
+if(!valid){document.getElementById('root').innerHTML='<div class="bad"><h2>장비 QR을 확인해 주세요</h2><p>유효한 장비 ID가 없습니다.</p></div>'}else{
+ const f=document.createElement('iframe');f.className='frame';f.src='./index.html?id='+encodeURIComponent(id)+'&mode=qr';f.title='장비 공개 정보';document.getElementById('root').appendChild(f);
+ f.onload=()=>{try{const d=f.contentDocument;const st=d.createElement('style');st.textContent='.topbar{display:none!important}.wrap{margin-top:14px!important}.footer{padding-top:10px!important}';d.head.appendChild(st)}catch(e){}}
+}
+</script>
+</body>
+</html>
