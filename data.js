@@ -9,7 +9,7 @@ window.TIG_DATA={
     {id:'EQ-007',sourceRow:10,maker:'퓨쳐시스템',model:'FW750',sn:'WFW750A0H0AHKB23020011',system:'-',status:'출고완료',received:'2026-09-14 17:08:54',receivedPlace:'807호 상품창고',org:'한국농어촌공사',branch:'경산청도지사',site:'미등록',install:'2026-09-14',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-008',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_01',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
     {id:'EQ-009',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_02',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
-    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'퓨쳐시스템',model:'ITU-410T',sn:'WFW410A0A0AHCA23060046',system:'Primary / Backup 이중화',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
+    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'퓨쳐시스템',model:'ITU-410T',sn:'WFW410A0A0AHCA23060046',system:'',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
     {id:'EQ-011',sourceRow:611,maker:'시스코',model:'C3750G-24T',sn:'FOC1350Y6DL',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-012',sourceRow:613,maker:'시스코',model:'C3650-24TS',sn:'FD024447M16J',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-013',sourceRow:94,maker:'시스코',model:'C1921',sn:'1212121',system:'-',status:'수리중',received:'2026-08-21 15:32:59',receivedPlace:'-',org:'사내/미배정',branch:'미배정',site:'미등록',install:'-',issue:'[일괄접수] 수리 요청 접수',repair:'2026-08-21',repairCount:0,project:'-'},
@@ -61,15 +61,49 @@ window.TIG_DATA={
     }
   });
 
-  function patchLabels(){
-    const orgCard=document.querySelector('.mode.org');
-    if(orgCard){
-      const p=orgCard.querySelector('p');
-      if(p) p.textContent='한국농어촌공사 · 더케이예다함 · 지역정보개발원 · 사내/미배정을 고객사/업체 기준으로 조회합니다.';
-      const count=orgCard.querySelector('.count');
-      if(count) count.textContent='4개 그룹 · 장비 20대';
+  const PHOTO={
+    future:{url:'https://www.boannews.com/media/upFiles/fu1.jpg',source:'퓨쳐시스템 WeGuardia 제품군 참고 이미지'},
+    'SNIPER ONE-D5300':{url:'https://www.wins21.com/upload/product/167777692_Mh5ADr6J_20220919041051.png',source:'WINS SNIPER ONE-d 제품 이미지'},
+    'SNIPER ONE-i5300':{url:'https://itsolution.co.kr/data/item/1696482643/167777692_LUhcnm8A_20220919040903.png',source:'WINS SNIPER ONE-i 제품 이미지'}
+  };
+
+  function ensurePhotoStyle(){
+    if(document.getElementById('productPhotoStyle')) return;
+    const style=document.createElement('style');
+    style.id='productPhotoStyle';
+    style.textContent='.photo.product-ref{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:220px}.photo.product-ref img{display:block;max-width:100%;max-height:180px;object-fit:contain;border-radius:9px;background:#fff}.photo.product-ref .pcap{font-size:11px;line-height:1.45;color:#667684;text-align:center}.photo.product-ref .pcap b{color:#334155;font-size:12px}';
+    document.head.appendChild(style);
+  }
+
+  function patchDetail(){
+    const hero=document.querySelector('.hero h1');
+    if(!hero) return;
+    const m=hero.textContent.match(/·\s*(EQ-\d+)/);
+    if(!m) return;
+    const x=eq.find(v=>v.id===m[1]);
+    if(!x) return;
+
+    if(x.id==='EQ-010'){
+      document.querySelectorAll('.k,.info-k').forEach(label=>{
+        if(label.textContent.trim()==='시스템 ID' && label.nextElementSibling){
+          label.nextElementSibling.textContent='';
+        }
+      });
     }
 
+    const grid=document.querySelector('.photoGrid');
+    if(!grid || grid.dataset.productPatched===x.id) return;
+    let p=null;
+    if(x.maker==='WINS') p=PHOTO[x.model]||null;
+    else if(x.maker==='퓨쳐시스템') p=PHOTO.future;
+    if(!p) return;
+    const exact=x.maker==='WINS';
+    grid.innerHTML='<div class="photo product-ref"><img src="'+p.url+'" alt="'+x.model+' 제품 이미지" loading="lazy"><div class="pcap"><b>'+x.maker+' · '+x.model+'</b><br>'+p.source+(exact?'':' · 정확한 실물 사진 확보 전 제품군 참고용')+'</div></div><div class="photo">📍<br><b>설치·현장 사진</b><br>현장 촬영 이미지 등록 영역</div>';
+    grid.dataset.productPatched=x.id;
+  }
+
+  function patchLabels(){
+    ensurePhotoStyle();
     const makerCard=document.querySelector('.mode.maker');
     if(makerCard){
       const p=makerCard.querySelector('p');
@@ -77,7 +111,6 @@ window.TIG_DATA={
       const count=makerCard.querySelector('.count');
       if(count) count.textContent='3개 제조사 · 장비 15대';
     }
-
     document.querySelectorAll('.navcard').forEach(card=>{
       const title=card.querySelector('h3');
       const meta=card.querySelector('.meta');
@@ -90,7 +123,8 @@ window.TIG_DATA={
         card.dataset.vendorPatched='1';
       }
     });
+    patchDetail();
   }
-  window.addEventListener('load',()=>setTimeout(patchLabels,20));
-  document.addEventListener('click',()=>setTimeout(patchLabels,20));
+  window.addEventListener('load',()=>setTimeout(patchLabels,40));
+  document.addEventListener('click',()=>setTimeout(patchLabels,40));
 })();
