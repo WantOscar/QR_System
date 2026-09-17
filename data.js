@@ -9,7 +9,7 @@ window.TIG_DATA={
     {id:'EQ-007',sourceRow:10,maker:'퓨쳐시스템',model:'FW750',sn:'WFW750A0H0AHKB23020011',system:'-',status:'출고완료',received:'2026-09-14 17:08:54',receivedPlace:'807호 상품창고',org:'한국농어촌공사',branch:'경산청도지사',site:'미등록',install:'2026-09-14',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-008',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_01',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
     {id:'EQ-009',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_02',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
-    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'퓨쳐시스템',model:'ITU-410T',sn:'WFW410A0A0AHCA23060046',system:'',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
+    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'퓨쳐시스템',model:'ITU-410T',sn:'WFW410A0A0AHCA23060046',system:'-',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
     {id:'EQ-011',sourceRow:611,maker:'시스코',model:'C3750G-24T',sn:'FOC1350Y6DL',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-012',sourceRow:613,maker:'시스코',model:'C3650-24TS',sn:'FD024447M16J',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-013',sourceRow:94,maker:'시스코',model:'C1921',sn:'1212121',system:'-',status:'수리중',received:'2026-08-21 15:32:59',receivedPlace:'-',org:'사내/미배정',branch:'미배정',site:'미등록',install:'-',issue:'[일괄접수] 수리 요청 접수',repair:'2026-08-21',repairCount:0,project:'-'},
@@ -61,18 +61,25 @@ window.TIG_DATA={
     }
   });
 
-  const PHOTO={
-    future:{url:'https://www.boannews.com/media/upFiles/fu1.jpg',source:'퓨쳐시스템 WeGuardia 제품군 참고 이미지'},
-    'SNIPER ONE-D5300':{url:'https://www.wins21.com/upload/product/167777692_Mh5ADr6J_20220919041051.png',source:'WINS SNIPER ONE-d 제품 이미지'},
-    'SNIPER ONE-i5300':{url:'https://itsolution.co.kr/data/item/1696482643/167777692_LUhcnm8A_20220919040903.png',source:'WINS SNIPER ONE-i 제품 이미지'}
-  };
-
   function ensurePhotoStyle(){
     if(document.getElementById('productPhotoStyle')) return;
     const style=document.createElement('style');
     style.id='productPhotoStyle';
     style.textContent='.photo.product-ref{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:220px}.photo.product-ref img{display:block;max-width:100%;max-height:180px;object-fit:contain;border-radius:9px;background:#fff}.photo.product-ref .pcap{font-size:11px;line-height:1.45;color:#667684;text-align:center}.photo.product-ref .pcap b{color:#334155;font-size:12px}';
     document.head.appendChild(style);
+  }
+
+  function deviceSvg(x){
+    const wins=x.maker==='WINS';
+    const accent=wins?'#1877d3':'#e7b900';
+    const body=wins?'#d9e1ea':'#20252c';
+    const face=wins?'#b8c5d1':'#343b44';
+    const text=wins?'#17324d':'#ffffff';
+    const brand=wins?'WINSTECHNET':'FutureSystems';
+    const sub=wins?(x.model.includes('D5300')?'SNIPER ONE-d':'SNIPER ONE-i'):(x.model.startsWith('ITU')?'WeGuardia ITU':'WeGuardia');
+    const ports=Array.from({length:8},(_,i)=>'<rect x="'+(286+i*28)+'" y="116" width="20" height="18" rx="2" fill="#111827"/><rect x="'+(291+i*28)+'" y="120" width="10" height="5" fill="#7dd3fc"/>').join('');
+    const svg='<svg xmlns="http://www.w3.org/2000/svg" width="760" height="270" viewBox="0 0 760 270"><rect width="760" height="270" rx="24" fill="#f8fafc"/><ellipse cx="380" cy="218" rx="300" ry="18" fill="#dbe3ea"/><path d="M105 75 L630 75 L685 103 L160 103 Z" fill="'+body+'" opacity=".88"/><rect x="115" y="100" width="565" height="86" rx="8" fill="'+face+'" stroke="#64748b" stroke-width="2"/><rect x="128" y="112" width="138" height="60" rx="5" fill="'+accent+'"/><text x="197" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="16" fill="'+text+'">'+brand+'</text><text x="197" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="'+text+'">'+sub+'</text>'+ports+'<circle cx="535" cy="127" r="5" fill="#22c55e"/><circle cx="552" cy="127" r="5" fill="#f59e0b"/><rect x="595" y="115" width="58" height="24" rx="4" fill="#111827"/><text x="380" y="244" text-anchor="middle" font-family="Arial,Malgun Gothic,sans-serif" font-weight="700" font-size="20" fill="#334155">'+x.maker+' · '+x.model+'</text></svg>';
+    return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
   }
 
   function patchDetail(){
@@ -86,24 +93,27 @@ window.TIG_DATA={
     if(x.id==='EQ-010'){
       document.querySelectorAll('.k,.info-k').forEach(label=>{
         if(label.textContent.trim()==='시스템 ID' && label.nextElementSibling){
-          label.nextElementSibling.textContent='';
+          label.nextElementSibling.textContent='-';
         }
       });
     }
 
     const grid=document.querySelector('.photoGrid');
     if(!grid || grid.dataset.productPatched===x.id) return;
-    let p=null;
-    if(x.maker==='WINS') p=PHOTO[x.model]||null;
-    else if(x.maker==='퓨쳐시스템') p=PHOTO.future;
-    if(!p) return;
-    const exact=x.maker==='WINS';
-    grid.innerHTML='<div class="photo product-ref"><img src="'+p.url+'" alt="'+x.model+' 제품 이미지" loading="lazy"><div class="pcap"><b>'+x.maker+' · '+x.model+'</b><br>'+p.source+(exact?'':' · 정확한 실물 사진 확보 전 제품군 참고용')+'</div></div><div class="photo">📍<br><b>설치·현장 사진</b><br>현장 촬영 이미지 등록 영역</div>';
+    if(x.maker!=='WINS' && x.maker!=='퓨쳐시스템') return;
+    grid.innerHTML='<div class="photo product-ref"><img src="'+deviceSvg(x)+'" alt="'+x.model+' 제품 외관 참고 이미지"><div class="pcap"><b>'+x.maker+' · '+x.model+'</b><br>모델별 제품 외관 참고 이미지 · 웹 내장형</div></div><div class="photo">📍<br><b>설치·현장 사진</b><br>현장 촬영 이미지 등록 영역</div>';
     grid.dataset.productPatched=x.id;
   }
 
   function patchLabels(){
     ensurePhotoStyle();
+    const orgCard=document.querySelector('.mode.org');
+    if(orgCard){
+      const p=orgCard.querySelector('p');
+      if(p) p.textContent='한국농어촌공사 · 더케이예다함 · 지역정보개발원 · 사내/미배정 기준으로 조회합니다.';
+      const count=orgCard.querySelector('.count');
+      if(count) count.textContent='4개 그룹 · 장비 20대';
+    }
     const makerCard=document.querySelector('.mode.maker');
     if(makerCard){
       const p=makerCard.querySelector('p');
@@ -125,6 +135,7 @@ window.TIG_DATA={
     });
     patchDetail();
   }
+
   window.addEventListener('load',()=>setTimeout(patchLabels,40));
   document.addEventListener('click',()=>setTimeout(patchLabels,40));
 })();
