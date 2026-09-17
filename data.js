@@ -9,7 +9,7 @@ window.TIG_DATA={
     {id:'EQ-007',sourceRow:10,maker:'퓨쳐시스템',model:'FW750',sn:'WFW750A0H0AHKB23020011',system:'-',status:'출고완료',received:'2026-09-14 17:08:54',receivedPlace:'807호 상품창고',org:'한국농어촌공사',branch:'경산청도지사',site:'미등록',install:'2026-09-14',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-008',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_01',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
     {id:'EQ-009',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_02',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
-    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'ITU',model:'IPSec VPN (HA)',sn:'미등록',system:'Primary / Backup 이중화',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
+    {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'퓨쳐시스템',model:'ITU410T',sn:'WFW410A0A0AHCA23060046',system:'Primary / Backup 이중화',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
     {id:'EQ-011',sourceRow:611,maker:'시스코',model:'C3750G-24T',sn:'FOC1350Y6DL',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-012',sourceRow:613,maker:'시스코',model:'C3650-24TS',sn:'FD024447M16J',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-013',sourceRow:94,maker:'시스코',model:'C1921',sn:'1212121',system:'-',status:'수리중',received:'2026-08-21 15:32:59',receivedPlace:'-',org:'사내/미배정',branch:'미배정',site:'미등록',install:'-',issue:'[일괄접수] 수리 요청 접수',repair:'2026-08-21',repairCount:0,project:'-'},
@@ -41,11 +41,6 @@ window.TIG_DATA={
       ['전원/상태 LED 이상','전원 공급 또는 장비 상태 이상 가능','전원 케이블과 장비 상태 LED를 확인','정상 상태로 복구되지 않으면 기술팀 문의'],
       ['LINK 미점등 / 통신 불가','연결 케이블 또는 인터페이스 상태 이상 가능','케이블 체결 상태와 연결 포트 LED를 확인','통신 불가가 지속되면 기술팀 문의'],
       ['트래픽 이상 의심','회선 또는 상위 구간 상태 확인 필요','주변 장비와 회선 상태만 확인','정책 변경 없이 기술팀에 현상 전달']
-    ],
-    'ITU':[
-      ['전원/상태 LED 이상','전원 공급 또는 장비 상태 이상 가능','전원 케이블 및 상태 LED 확인','복구되지 않으면 기술팀 문의'],
-      ['VPN 통신 불가','회선·연결 구간 또는 상대 구간 상태 확인 필요','라우터/회선 및 연결 케이블 상태만 확인','VPN 설정 변경 없이 기술팀 문의'],
-      ['Primary/Backup 상태 이상','이중화 상태 확인 필요','두 장비의 전원 및 상태 LED만 확인','절체·재부팅 없이 기술팀 문의']
     ]
   }
 };
@@ -70,9 +65,9 @@ window.TIG_DATA={
     const makerCard=document.querySelector('.mode.maker');
     if(makerCard){
       const p=makerCard.querySelector('p');
-      if(p) p.textContent='제조사 → 모델 → 장비 순서로 조회합니다. 퓨쳐시스템·시스코·WINS·ITU를 시범 분류했습니다.';
+      if(p) p.textContent='제조사 → 모델 → 장비 순서로 조회합니다. 퓨쳐시스템·시스코·WINS를 시범 분류했습니다.';
       const count=makerCard.querySelector('.count');
-      if(count) count.textContent='4개 제조사 · 장비 15대';
+      if(count) count.textContent='3개 제조사 · 장비 15대';
     }
     document.querySelectorAll('.navcard').forEach(card=>{
       const title=card.querySelector('h3');
@@ -82,7 +77,7 @@ window.TIG_DATA={
         meta.innerHTML='<b>사용 제조사 WINS</b><br>'+meta.innerHTML;
         card.dataset.vendorPatched='1';
       }else if(title.textContent.trim()==='지역정보개발원'){
-        meta.innerHTML='<b>사용 제조사 ITU</b><br>'+meta.innerHTML;
+        meta.innerHTML='<b>사용 장비 ITU410T · 제조사 퓨쳐시스템</b><br>'+meta.innerHTML;
         card.dataset.vendorPatched='1';
       }
     });
