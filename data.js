@@ -62,6 +62,14 @@ window.TIG_DATA={
   });
 
   function patchLabels(){
+    const orgCard=document.querySelector('.mode.org');
+    if(orgCard){
+      const p=orgCard.querySelector('p');
+      if(p) p.textContent='한국농어촌공사 · 더케이예다함 · 지역정보개발원 · 사내/미배정을 고객사/업체 기준으로 조회합니다.';
+      const count=orgCard.querySelector('.count');
+      if(count) count.textContent='4개 그룹 · 장비 20대';
+    }
+
     const makerCard=document.querySelector('.mode.maker');
     if(makerCard){
       const p=makerCard.querySelector('p');
@@ -69,6 +77,7 @@ window.TIG_DATA={
       const count=makerCard.querySelector('.count');
       if(count) count.textContent='3개 제조사 · 장비 15대';
     }
+
     document.querySelectorAll('.navcard').forEach(card=>{
       const title=card.querySelector('h3');
       const meta=card.querySelector('.meta');
