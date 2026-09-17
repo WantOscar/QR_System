@@ -4,17 +4,12 @@ window.TIG_DATA={
     {id:'EQ-002',sourceRow:3,maker:'퓨쳐시스템',model:'FW410',sn:'WFW410A0A0AHCA22010164',system:'갈천저수지 방수문',status:'출고완료',received:'2026-09-16 15:08:35',receivedPlace:'서울 본사 805호 회의실',org:'한국농어촌공사',branch:'고성통영거제지사',site:'갈천저수지 방수문',install:'2026-09-16',issue:'증상 확인 불가 (펌웨어 업데이트)',repair:'2026-09-16',repairCount:2,project:'-'},
     {id:'EQ-003',sourceRow:4,maker:'퓨쳐시스템',model:'XTM365Z',sn:'WXT365Z008AHKA21010042',system:'-',status:'출고완료',received:'2026-09-16 13:57:16',receivedPlace:'서울 본사 805호 회의실',org:'한국농어촌공사',branch:'영광지사',site:'남창보(영광공구)',install:'2026-09-16',issue:'증상 미확인',repair:'2026-09-16',repairCount:1,project:'영광지사'},
     {id:'EQ-004',sourceRow:5,maker:'퓨쳐시스템',model:'XTM365',sn:'WXT365A008AHKA17040230',system:'-',status:'출고완료',received:'2026-09-16 13:57:16',receivedPlace:'서울 본사 805호 회의실',org:'한국농어촌공사',branch:'영광지사',site:'남산2제',install:'2026-09-16',issue:'전원 불량',repair:'2026-09-16',repairCount:1,project:'-'},
-
     {id:'EQ-005',sourceRow:'예다함-품목4',maker:'WINS',model:'SNIPER ONE-D5300',sn:'미등록',system:'DDoS_01',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC DDoS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
     {id:'EQ-006',sourceRow:'예다함-품목4',maker:'WINS',model:'SNIPER ONE-D5300',sn:'미등록',system:'DDoS_02',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC DDoS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
-
     {id:'EQ-007',sourceRow:10,maker:'퓨쳐시스템',model:'FW750',sn:'WFW750A0H0AHKB23020011',system:'-',status:'출고완료',received:'2026-09-14 17:08:54',receivedPlace:'807호 상품창고',org:'한국농어촌공사',branch:'경산청도지사',site:'미등록',install:'2026-09-14',issue:'-',repair:'-',repairCount:0,project:'-'},
-
     {id:'EQ-008',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_01',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
     {id:'EQ-009',sourceRow:'예다함-품목5',maker:'WINS',model:'SNIPER ONE-i5300',sn:'미등록',system:'IPS_02',status:'도입 대상',received:'-',receivedPlace:'더케이예다함 IDC',org:'더케이예다함',branch:'WINS 사용',site:'IDC IPS 구간',install:'-',issue:'신규 도입 대상',repair:'-',repairCount:0,project:'The-K 예다함 네트워크 및 보안 시스템 재구축 사업'},
-
     {id:'EQ-010',sourceRow:'지역정보개발원-구성',maker:'ITU',model:'IPSec VPN (HA)',sn:'미등록',system:'Primary / Backup 이중화',status:'운영',received:'-',receivedPlace:'지역정보개발원 본원',org:'지역정보개발원',branch:'ITU 사용',site:'보안관리대역 IPSec',install:'-',issue:'IPSec VPN 이중화 구성',repair:'-',repairCount:0,project:'지역정보개발원 VPN 구성'},
-
     {id:'EQ-011',sourceRow:611,maker:'시스코',model:'C3750G-24T',sn:'FOC1350Y6DL',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-012',sourceRow:613,maker:'시스코',model:'C3650-24TS',sn:'FD024447M16J',system:'-',status:'창고보관',received:'2026-07-20 00:00:00',receivedPlace:'서울 본사 807호 기술팀',org:'사내/미배정',branch:'서울 본사 807호 기술팀',site:'미등록',install:'-',issue:'-',repair:'-',repairCount:0,project:'-'},
     {id:'EQ-013',sourceRow:94,maker:'시스코',model:'C1921',sn:'1212121',system:'-',status:'수리중',received:'2026-08-21 15:32:59',receivedPlace:'-',org:'사내/미배정',branch:'미배정',site:'미등록',install:'-',issue:'[일괄접수] 수리 요청 접수',repair:'2026-08-21',repairCount:0,project:'-'},
@@ -70,4 +65,28 @@ window.TIG_DATA={
       return result;
     }
   });
+
+  function patchLabels(){
+    const makerCard=document.querySelector('.mode.maker');
+    if(makerCard){
+      const p=makerCard.querySelector('p');
+      if(p) p.textContent='제조사 → 모델 → 장비 순서로 조회합니다. 퓨쳐시스템·시스코·WINS·ITU를 시범 분류했습니다.';
+      const count=makerCard.querySelector('.count');
+      if(count) count.textContent='4개 제조사 · 장비 15대';
+    }
+    document.querySelectorAll('.navcard').forEach(card=>{
+      const title=card.querySelector('h3');
+      const meta=card.querySelector('.meta');
+      if(!title||!meta||card.dataset.vendorPatched==='1') return;
+      if(title.textContent.trim()==='더케이예다함'){
+        meta.innerHTML='<b>사용 제조사 WINS</b><br>'+meta.innerHTML;
+        card.dataset.vendorPatched='1';
+      }else if(title.textContent.trim()==='지역정보개발원'){
+        meta.innerHTML='<b>사용 제조사 ITU</b><br>'+meta.innerHTML;
+        card.dataset.vendorPatched='1';
+      }
+    });
+  }
+  window.addEventListener('load',()=>setTimeout(patchLabels,20));
+  document.addEventListener('click',()=>setTimeout(patchLabels,20));
 })();
